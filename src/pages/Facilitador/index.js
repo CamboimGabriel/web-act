@@ -17,6 +17,9 @@ const Facilitador = () => {
   const [newNick, setNewNick] = useState("");
   const [changeNick, setChangeNick] = useState(false);
   const [colaboradoresCoord, setColaboradoresCoord] = useState([]);
+  const [nick, setNick] = useState("");
+  const [city, setCity] = useState("");
+  const [changeCity, setChangeCity] = useState(false);
 
   useEffect(() => {
     async function handleApi() {
@@ -713,6 +716,108 @@ const Facilitador = () => {
               instance.post("/newnick", {
                 oldNick,
                 newNick,
+              });
+
+              window.location.reload();
+            }}
+          >
+            Confirmar Mudança
+          </button>
+        </div>
+      )}
+
+      <button
+        style={{
+          height: 80,
+          fontSize: 20,
+          borderRadius: 30,
+          background: "#faaa",
+          margin: 10,
+          color: "black",
+          border: "2px solid black",
+          cursor: "pointer",
+
+          width: 300,
+        }}
+        onClick={async () => {
+          setChangeCity((prev) => !prev);
+        }}
+      >
+        Modificar cidade do Facilitador/Coordenador
+      </button>
+
+      {changeCity && (
+        <div
+          style={{
+            margin: 8,
+            border: "3px solid black",
+            padding: 10,
+            borderRadius: 10,
+            justifyContent: "center",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            width: "40%",
+          }}
+        >
+          <div style={{ color: "black", fontSize: 30, fontWeight: 600 }}>
+            MUDAR CIDADE DE FACILITADOR/COORDENADOR
+          </div>
+          <div>
+            <div
+              style={{
+                margin: 8,
+                borderLeft: "1px solid black",
+                display: "flex",
+                alignItems: "center",
+                padding: 10,
+                borderRadius: 30,
+              }}
+            >
+              <label style={{ marginRight: 10 }}>Nome do usuário:</label>
+              <input
+                placeholder="Nome do usuário"
+                value={nick}
+                onChange={(e) => setNick(e.target.value)}
+              />
+            </div>
+            {localStorage.getItem("type") !== "coord" && (
+              <div
+                style={{
+                  margin: 8,
+                  borderLeft: "1px solid black",
+                  display: "flex",
+                  alignItems: "center",
+                  padding: 10,
+                  borderRadius: 30,
+                }}
+              >
+                <label style={{ marginRight: 10 }}>
+                  Nova cidade do usuário:
+                </label>
+                <input
+                  placeholder="Nova cidade do usuário"
+                  value={city}
+                  onChange={(e) => setCity(e.target.value)}
+                />
+              </div>
+            )}
+          </div>
+          <button
+            style={{
+              height: 40,
+              fontSize: 20,
+              borderRadius: 30,
+              background: "#faaa",
+              margin: 10,
+              color: "black",
+              border: "2px solid black",
+              cursor: "pointer",
+            }}
+            onClick={async () => {
+              await instance.post("/newcity", {
+                nick,
+                city,
               });
 
               window.location.reload();

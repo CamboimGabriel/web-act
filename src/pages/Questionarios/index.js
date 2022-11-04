@@ -802,28 +802,28 @@ const Questionarios = () => {
                       <td>{item?.formulario1?.questionario?.SDQ_23}</td>
                       <td>{item?.formulario1?.questionario?.SDQ_24}</td>
                       <td>{item?.formulario1?.questionario?.SDQ_25}</td>
-                      <td>{item?.formulario1?.questionario?.SDQ_EPVA_3}</td>
-                      <td>{item?.formulario1?.questionario?.SDQ_EPVA_4}</td>
-                      <td>{item?.formulario1?.questionario?.SDQ_EPVA_8}</td>
-                      <td>{item?.formulario1?.questionario?.SDQ_EPVA_10}</td>
-                      <td>{item?.formulario1?.questionario?.SDQ_EPVA_12}</td>
-                      <td>{item?.formulario1?.questionario?.SDQ_EPVA_14}</td>
-                      <td>{item?.formulario1?.questionario?.SDQ_EPVA_15}</td>
-                      <td>{item?.formulario1?.questionario?.SDQ_EPVA_16}</td>
-                      <td>{item?.formulario1?.questionario?.SDQ_EPVA_18}</td>
-                      <td>{item?.formulario1?.questionario?.SDQ_EPVA_20}</td>
-                      <td>{item?.formulario1?.questionario?.SDQ_EPVA_21}</td>
-                      <td>{item?.formulario1?.questionario?.SDQ_EPVA_23}</td>
-                      <td>{item?.formulario1?.questionario?.SDQ_EPVA_24}</td>
-                      <td>{item?.formulario1?.questionario?.SDQ_EPVA_26}</td>
-                      <td>{item?.formulario1?.questionario?.SDQ_EPVA_28}</td>
-                      <td>{item?.formulario1?.questionario?.SDQ_EPVA_31}</td>
-                      <td>{item?.formulario1?.questionario?.SDQ_EPVA_32}</td>
-                      <td>{item?.formulario1?.questionario?.SDQ_EPVA_34}</td>
-                      <td>{item?.formulario1?.questionario?.SDQ_EPVA_36}</td>
-                      <td>{item?.formulario1?.questionario?.SDQ_EPVA_38}</td>
-                      <td>{item?.formulario1?.questionario?.SDQ_EPVA_40}</td>
-                      <td>{item?.formulario1?.questionario?.SDQ_EPVA_42}</td>
+                      <td>{item?.formulario1?.questionario?.EPVA_3}</td>
+                      <td>{item?.formulario1?.questionario?.EPVA_4}</td>
+                      <td>{item?.formulario1?.questionario?.EPVA_8}</td>
+                      <td>{item?.formulario1?.questionario?.EPVA_10}</td>
+                      <td>{item?.formulario1?.questionario?.EPVA_12}</td>
+                      <td>{item?.formulario1?.questionario?.EPVA_14}</td>
+                      <td>{item?.formulario1?.questionario?.EPVA_15}</td>
+                      <td>{item?.formulario1?.questionario?.EPVA_16}</td>
+                      <td>{item?.formulario1?.questionario?.EPVA_18}</td>
+                      <td>{item?.formulario1?.questionario?.EPVA_20}</td>
+                      <td>{item?.formulario1?.questionario?.EPVA_21}</td>
+                      <td>{item?.formulario1?.questionario?.EPVA_23}</td>
+                      <td>{item?.formulario1?.questionario?.EPVA_24}</td>
+                      <td>{item?.formulario1?.questionario?.EPVA_26}</td>
+                      <td>{item?.formulario1?.questionario?.EPVA_28}</td>
+                      <td>{item?.formulario1?.questionario?.EPVA_31}</td>
+                      <td>{item?.formulario1?.questionario?.EPVA_32}</td>
+                      <td>{item?.formulario1?.questionario?.EPVA_34}</td>
+                      <td>{item?.formulario1?.questionario?.EPVA_36}</td>
+                      <td>{item?.formulario1?.questionario?.EPVA_38}</td>
+                      <td>{item?.formulario1?.questionario?.EPVA_40}</td>
+                      <td>{item?.formulario1?.questionario?.EPVA_42}</td>
                       <td>{item?.formulario2?._id?.$oid}</td>
                       <td>
                         {item?.formulario2?.questionario?.participouOutro}
@@ -922,22 +922,22 @@ const Questionarios = () => {
                       <td>{item?.formulario2?.questionario?.SDQ_23}</td>
                       <td>{item?.formulario2?.questionario?.SDQ_24}</td>
                       <td>{item?.formulario2?.questionario?.SDQ_25}</td>
-                      <td>{item?.formulario2?.questionario?.SDQ_EPVA_4}</td>
-                      <td>{item?.formulario2?.questionario?.SDQ_EPVA_8}</td>
-                      <td>{item?.formulario2?.questionario?.SDQ_EPVA_10}</td>
-                      <td>{item?.formulario2?.questionario?.SDQ_EPVA_12}</td>
-                      <td>{item?.formulario2?.questionario?.SDQ_EPVA_16}</td>
-                      <td>{item?.formulario2?.questionario?.SDQ_EPVA_18}</td>
-                      <td>{item?.formulario2?.questionario?.SDQ_EPVA_20}</td>
-                      <td>{item?.formulario2?.questionario?.SDQ_EPVA_21}</td>
-                      <td>{item?.formulario2?.questionario?.SDQ_EPVA_23}</td>
-                      <td>{item?.formulario2?.questionario?.SDQ_EPVA_24}</td>
-                      <td>{item?.formulario2?.questionario?.SDQ_EPVA_26}</td>
-                      <td>{item?.formulario2?.questionario?.SDQ_EPVA_28}</td>
-                      <td>{item?.formulario2?.questionario?.SDQ_EPVA_34}</td>
-                      <td>{item?.formulario2?.questionario?.SDQ_EPVA_36}</td>
-                      <td>{item?.formulario2?.questionario?.SDQ_EPVA_38}</td>
-                      <td>{item?.formulario2?.questionario?.SDQ_EPVA_42}</td>
+                      <td>{item?.formulario2?.questionario?.EPVA_4}</td>
+                      <td>{item?.formulario2?.questionario?.EPVA_8}</td>
+                      <td>{item?.formulario2?.questionario?.EPVA_10}</td>
+                      <td>{item?.formulario2?.questionario?.EPVA_12}</td>
+                      <td>{item?.formulario2?.questionario?.EPVA_16}</td>
+                      <td>{item?.formulario2?.questionario?.EPVA_18}</td>
+                      <td>{item?.formulario2?.questionario?.EPVA_20}</td>
+                      <td>{item?.formulario2?.questionario?.EPVA_21}</td>
+                      <td>{item?.formulario2?.questionario?.EPVA_23}</td>
+                      <td>{item?.formulario2?.questionario?.EPVA_24}</td>
+                      <td>{item?.formulario2?.questionario?.EPVA_26}</td>
+                      <td>{item?.formulario2?.questionario?.EPVA_28}</td>
+                      <td>{item?.formulario2?.questionario?.EPVA_34}</td>
+                      <td>{item?.formulario2?.questionario?.EPVA_36}</td>
+                      <td>{item?.formulario2?.questionario?.EPVA_38}</td>
+                      <td>{item?.formulario2?.questionario?.EPVA_42}</td>
                       <td>{item?.formulario2?.questionario?.VI_1}</td>
                       <td>{item?.formulario2?.questionario?.VI_2}</td>
                       <td>{item?.formulario2?.questionario?.VI_3}</td>
@@ -1041,22 +1041,22 @@ const Questionarios = () => {
                       <td>{item?.formulario3?.questionario?.SDQ_23}</td>
                       <td>{item?.formulario3?.questionario?.SDQ_24}</td>
                       <td>{item?.formulario3?.questionario?.SDQ_25}</td>
-                      <td>{item?.formulario3?.questionario?.SDQ_EPVA_4}</td>
-                      <td>{item?.formulario3?.questionario?.SDQ_EPVA_8}</td>
-                      <td>{item?.formulario3?.questionario?.SDQ_EPVA_10}</td>
-                      <td>{item?.formulario3?.questionario?.SDQ_EPVA_12}</td>
-                      <td>{item?.formulario3?.questionario?.SDQ_EPVA_16}</td>
-                      <td>{item?.formulario3?.questionario?.SDQ_EPVA_18}</td>
-                      <td>{item?.formulario3?.questionario?.SDQ_EPVA_20}</td>
-                      <td>{item?.formulario3?.questionario?.SDQ_EPVA_21}</td>
-                      <td>{item?.formulario3?.questionario?.SDQ_EPVA_23}</td>
-                      <td>{item?.formulario3?.questionario?.SDQ_EPVA_24}</td>
-                      <td>{item?.formulario3?.questionario?.SDQ_EPVA_26}</td>
-                      <td>{item?.formulario3?.questionario?.SDQ_EPVA_28}</td>
-                      <td>{item?.formulario3?.questionario?.SDQ_EPVA_34}</td>
-                      <td>{item?.formulario3?.questionario?.SDQ_EPVA_36}</td>
-                      <td>{item?.formulario3?.questionario?.SDQ_EPVA_38}</td>
-                      <td>{item?.formulario3?.questionario?.SDQ_EPVA_42}</td>
+                      <td>{item?.formulario3?.questionario?.EPVA_4}</td>
+                      <td>{item?.formulario3?.questionario?.EPVA_8}</td>
+                      <td>{item?.formulario3?.questionario?.EPVA_10}</td>
+                      <td>{item?.formulario3?.questionario?.EPVA_12}</td>
+                      <td>{item?.formulario3?.questionario?.EPVA_16}</td>
+                      <td>{item?.formulario3?.questionario?.EPVA_18}</td>
+                      <td>{item?.formulario3?.questionario?.EPVA_20}</td>
+                      <td>{item?.formulario3?.questionario?.EPVA_21}</td>
+                      <td>{item?.formulario3?.questionario?.EPVA_23}</td>
+                      <td>{item?.formulario3?.questionario?.EPVA_24}</td>
+                      <td>{item?.formulario3?.questionario?.EPVA_26}</td>
+                      <td>{item?.formulario3?.questionario?.EPVA_28}</td>
+                      <td>{item?.formulario3?.questionario?.EPVA_34}</td>
+                      <td>{item?.formulario3?.questionario?.EPVA_36}</td>
+                      <td>{item?.formulario3?.questionario?.EPVA_38}</td>
+                      <td>{item?.formulario3?.questionario?.EPVA_42}</td>
                       <td>{item?.formulario3?.questionario.ACT}</td>
                     </tr>
                   ))}

@@ -107,7 +107,7 @@ const Login = () => {
         >
           Entrar
         </button>
-        Contato: actribeirao@gmail.com | Versão: 1.9
+        Contato: actribeirao@gmail.com | Versão: 2.0
       </div>
     </div>
   );
