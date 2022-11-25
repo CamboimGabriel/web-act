@@ -27,14 +27,15 @@ const Familia = () => {
   useEffect(() => {
     async function handleAPI() {
       const resolve = await instance.get("/todasfamilias");
+      const response = await instance.get("/users");
 
       setFamilias(() => ({
         comGrupo: resolve.data.comGrupo.filter(
           (it) =>
             localStorage.getItem("type") !== "coord" ||
             (localStorage.getItem("type") === "coord" &&
-              it.cuidador.cidade ===
-                colaboradores.find(
+              response.data.find((el) => el._id === it.userId)?.cidade ===
+                response.data.find(
                   (item) => item.nick === localStorage.getItem("user")
                 )?.cidade)
         ),
@@ -42,8 +43,8 @@ const Familia = () => {
           (it) =>
             localStorage.getItem("type") !== "coord" ||
             (localStorage.getItem("type") === "coord" &&
-              it.cuidador.cidade ===
-                colaboradores.find(
+              response.data.find((el) => el._id === it.userId)?.cidade ===
+                response.data.find(
                   (item) => item.nick === localStorage.getItem("user")
                 )?.cidade)
         ),
@@ -51,7 +52,6 @@ const Familia = () => {
 
       setStarterFamilias(resolve.data);
 
-      const response = await instance.get("/users");
       setColaboradores(response.data);
     }
 
@@ -107,11 +107,10 @@ const Familia = () => {
             .includes(filtrosAux.estado.toLowerCase()) &&
           it.userId.toLowerCase().includes(filtrosAux.userId.toLowerCase()) &&
           (localStorage.getItem("type") !== "coord" ||
-            (localStorage.getItem("type") === "coord" &&
-              it.cidade ===
-                colaboradores.find(
-                  (item) => item.nick === localStorage.getItem("user")
-                )?.cidade))
+            colaboradores.find((el) => el._id === it.userId)?.cidade ===
+              colaboradores.find(
+                (item) => item.nick === localStorage.getItem("user")
+              )?.cidade)
       ),
       semGrupo: starterFamilias.semGrupo.filter(
         (it) =>
@@ -124,7 +123,7 @@ const Familia = () => {
           it.userId.toLowerCase().includes(filtrosAux.userId.toLowerCase()) &&
           (localStorage.getItem("type") !== "coord" ||
             (localStorage.getItem("type") === "coord" &&
-              it.cidade ===
+              colaboradores.find((el) => el._id === it.userId)?.cidade ===
                 colaboradores.find(
                   (item) => item.nick === localStorage.getItem("user")
                 )?.cidade))

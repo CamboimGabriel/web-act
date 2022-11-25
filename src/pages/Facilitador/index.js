@@ -32,15 +32,49 @@ const Facilitador = () => {
             (localStorage.getItem("type") !== "coord" ||
               (localStorage.getItem("type") === "coord" &&
                 it.cidade ===
-                  colaboradoresCoord.find(
+                  response.data.find(
                     (item) => item.nick === localStorage.getItem("user")
                   )?.cidade))
         )
       );
-      setStarterColaboradores(response.data.filter((it) => !it.coord));
 
-      setColaboradoresCoord(response.data.filter((it) => it.coord));
-      setStarterColaboradoresCoord(response.data.filter((it) => it.coord));
+      setStarterColaboradores(
+        response.data.filter(
+          (it) =>
+            !it.coord &&
+            (localStorage.getItem("type") !== "coord" ||
+              (localStorage.getItem("type") === "coord" &&
+                it.cidade ===
+                  response.data.find(
+                    (item) => item.nick === localStorage.getItem("user")
+                  )?.cidade))
+        )
+      );
+
+      setColaboradoresCoord(
+        response.data.filter(
+          (it) =>
+            it.coord &&
+            (localStorage.getItem("type") !== "coord" ||
+              (localStorage.getItem("type") === "coord" &&
+                it.cidade ===
+                  response.data.find(
+                    (item) => item.nick === localStorage.getItem("user")
+                  )?.cidade))
+        )
+      );
+      setStarterColaboradoresCoord(
+        response.data.filter(
+          (it) =>
+            it.coord &&
+            (localStorage.getItem("type") !== "coord" ||
+              (localStorage.getItem("type") === "coord" &&
+                it.cidade ===
+                  response.data.find(
+                    (item) => item.nick === localStorage.getItem("user")
+                  )?.cidade))
+        )
+      );
     }
 
     handleApi();
@@ -605,14 +639,16 @@ const Facilitador = () => {
             onClick={async () => {
               setNewAddCoord({ cidade: "", nick: "", senha: "" });
 
-              instance.post("/signup", {
-                nick: newAddCoord.nick,
-                password: newAddCoord.senha,
-                cidade: newAddCoord.cidade,
-                coord: true,
-              });
-
-              window.location.reload();
+              await instance
+                .post("/signup", {
+                  nick: newAddCoord.nick,
+                  password: newAddCoord.senha,
+                  cidade: newAddCoord.cidade,
+                  coord: true,
+                })
+                .then(() => {
+                  window.location.reload();
+                });
             }}
           >
             Adicionar Coordenador
