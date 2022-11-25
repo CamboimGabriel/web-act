@@ -28,6 +28,7 @@ const Login = () => {
 
         localStorage.setItem("token", resolve.data.token);
         localStorage.setItem("type", "coord");
+        localStorage.setItem("user", login);
 
         navigate("/familias");
       } catch (error) {
@@ -107,7 +108,7 @@ const Login = () => {
         >
           Entrar
         </button>
-        Contato: actribeirao@gmail.com | Versão: 2.0
+        Contato: actribeirao@gmail.com | Versão: 2.2
       </div>
     </div>
   );

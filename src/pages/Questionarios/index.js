@@ -267,6 +267,7 @@ const Questionarios = () => {
                     <th>Nome da Criança</th>
                     <th>Nascimento da Crianca</th>
                     <th>Idade da crianca</th>
+                    <th>Idade em meses da crianca</th>
                     <th>Pele da Crianca</th>
                     <th>Sexo da Crianca</th>
                     <th>Nome do Cuidador</th>
@@ -634,7 +635,18 @@ const Questionarios = () => {
                       </td>
                       <td>{item?.familia?.crianca?.nome}</td>
                       <td>{item?.familia?.crianca?.nascimento}</td>
-                      <td>{item?.familia?.crianca?.idade}</td>
+                      <td>
+                        {item?.familia?.crianca?.idade < 1
+                          ? 0
+                          : item?.familia?.crianca?.idade}{" "}
+                        Anos
+                      </td>
+                      <td>
+                        {item?.familia?.crianca?.idade * 12 > 12
+                          ? 0
+                          : item?.familia?.crianca?.idade * 12}{" "}
+                        Meses
+                      </td>
                       <td>{item?.familia?.crianca?.pele}</td>
                       <td>{item?.familia?.crianca?.sexo}</td>
                       <td>{item?.familia?.cuidador?.nome}</td>

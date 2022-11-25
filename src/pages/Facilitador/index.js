@@ -25,7 +25,18 @@ const Facilitador = () => {
     async function handleApi() {
       const response = await instance.get("/users");
 
-      setColaboradores(response.data.filter((it) => !it.coord));
+      setColaboradores(
+        response.data.filter(
+          (it) =>
+            !it.coord &&
+            (localStorage.getItem("type") !== "coord" ||
+              (localStorage.getItem("type") === "coord" &&
+                it.cidade ===
+                  colaboradoresCoord.find(
+                    (item) => item.nick === localStorage.getItem("user")
+                  )?.cidade))
+        )
+      );
       setStarterColaboradores(response.data.filter((it) => !it.coord));
 
       setColaboradoresCoord(response.data.filter((it) => it.coord));
@@ -109,7 +120,13 @@ const Facilitador = () => {
             it?.cidade
               .toLowerCase()
               .includes(filtrosAux.cidade?.toLowerCase())) ||
-            (!it?.cidade && filtrosAux.cidade === ""))
+            (!it?.cidade && filtrosAux.cidade === "")) &&
+          (localStorage.getItem("type") !== "coord" ||
+            (localStorage.getItem("type") === "coord" &&
+              it.cidade ===
+                colaboradoresCoord.find(
+                  (item) => item.nick === localStorage.getItem("user")
+                )?.cidade))
       )
     );
   };
@@ -193,35 +210,37 @@ const Facilitador = () => {
         >
           Famílias
         </button>
-        <button
-          disabled={location === "/questionarios"}
-          style={
-            location === "/questionarios"
-              ? {
-                  height: 80,
-                  fontSize: 30,
-                  borderRadius: 30,
-                  background: "#faaa",
-                  margin: 10,
-                  color: "black",
-                  border: "2px solid black",
-                  cursor: "pointer",
-                }
-              : {
-                  height: 80,
-                  fontSize: 30,
-                  borderRadius: 30,
-                  margin: 10,
-                  border: "2px solid black",
-                  cursor: "pointer",
-                }
-          }
-          onClick={() => {
-            navigate("/questionarios");
-          }}
-        >
-          Questionários
-        </button>
+        {localStorage.getItem("type") !== "coord" && (
+          <button
+            disabled={location === "/questionarios"}
+            style={
+              location === "/questionarios"
+                ? {
+                    height: 80,
+                    fontSize: 30,
+                    borderRadius: 30,
+                    background: "#faaa",
+                    margin: 10,
+                    color: "black",
+                    border: "2px solid black",
+                    cursor: "pointer",
+                  }
+                : {
+                    height: 80,
+                    fontSize: 30,
+                    borderRadius: 30,
+                    margin: 10,
+                    border: "2px solid black",
+                    cursor: "pointer",
+                  }
+            }
+            onClick={() => {
+              navigate("/questionarios");
+            }}
+          >
+            Questionários
+          </button>
+        )}
         <button
           style={{
             height: 80,
@@ -571,29 +590,7 @@ const Facilitador = () => {
               }
             />
           </div>
-          <div
-            style={{
-              margin: 8,
-              borderLeft: "1px solid black",
-              display: "flex",
-              alignItems: "center",
-              padding: 10,
-              borderRadius: 30,
-            }}
-          >
-            <label style={{ marginRight: 10 }}>Senha do usuário:</label>
-            <input
-              placeholder="Senha do usuário"
-              type="password"
-              value={newAddCoord.senha}
-              onChange={(e) =>
-                setNewAddCoord((prev) => ({
-                  ...prev,
-                  senha: e.target.value,
-                }))
-              }
-            />
-          </div>
+
           <button
             style={{
               height: 40,
@@ -614,38 +611,42 @@ const Facilitador = () => {
                 cidade: newAddCoord.cidade,
                 coord: true,
               });
+
+              window.location.reload();
             }}
           >
             Adicionar Coordenador
           </button>
         </div>
       )}
-      <button
-        style={{
-          height: 80,
-          fontSize: 20,
-          borderRadius: 30,
-          background: "#faaa",
-          margin: 10,
-          color: "black",
-          border: "2px solid black",
-          cursor: "pointer",
+      {localStorage.getItem("type") !== "coord" && (
+        <button
+          style={{
+            height: 80,
+            fontSize: 20,
+            borderRadius: 30,
+            background: "#faaa",
+            margin: 10,
+            color: "black",
+            border: "2px solid black",
+            cursor: "pointer",
 
-          width: 300,
-        }}
-        onClick={async () => {
-          setChangeNick((prev) => !prev);
+            width: 300,
+          }}
+          onClick={async () => {
+            setChangeNick((prev) => !prev);
 
-          instance.post("/signup", {
-            nick: newAddCoord.nick,
-            password: newAddCoord.senha,
-            cidade: newAddCoord.cidade,
-            coord: true,
-          });
-        }}
-      >
-        Modificar nome do Facilitador/Coordenador
-      </button>
+            instance.post("/signup", {
+              nick: newAddCoord.nick,
+              password: newAddCoord.senha,
+              cidade: newAddCoord.cidade,
+              coord: true,
+            });
+          }}
+        >
+          Modificar nome do Facilitador/Coordenador
+        </button>
+      )}
       {changeNick && (
         <div
           style={{
@@ -726,25 +727,27 @@ const Facilitador = () => {
         </div>
       )}
 
-      <button
-        style={{
-          height: 80,
-          fontSize: 20,
-          borderRadius: 30,
-          background: "#faaa",
-          margin: 10,
-          color: "black",
-          border: "2px solid black",
-          cursor: "pointer",
+      {localStorage.getItem("type") !== "coord" && (
+        <button
+          style={{
+            height: 80,
+            fontSize: 20,
+            borderRadius: 30,
+            background: "#faaa",
+            margin: 10,
+            color: "black",
+            border: "2px solid black",
+            cursor: "pointer",
 
-          width: 300,
-        }}
-        onClick={async () => {
-          setChangeCity((prev) => !prev);
-        }}
-      >
-        Modificar cidade do Facilitador/Coordenador
-      </button>
+            width: 300,
+          }}
+          onClick={async () => {
+            setChangeCity((prev) => !prev);
+          }}
+        >
+          Modificar cidade do Facilitador/Coordenador
+        </button>
+      )}
 
       {changeCity && (
         <div
@@ -964,7 +967,9 @@ const Facilitador = () => {
         <table id={"fac"}>
           <thead>
             <tr>
-              <th>Excluir usuário</th>
+              {localStorage.getItem("type") !== "coord" && (
+                <th>Excluir usuário</th>
+              )}
               <th>Id do usuário</th>
               <th>Nome do usuário</th>
               <th>Cidade do usuário</th>
@@ -974,36 +979,38 @@ const Facilitador = () => {
           <tbody>
             {colaboradores.map((item) => (
               <tr>
-                <td style={{ display: "flex", justifyContent: "center" }}>
-                  {excluir === item._id ? (
-                    <div style={{ display: "flex", flexDirection: "column" }}>
-                      Excluir {item.nick}?
+                {localStorage.getItem("type") !== "coord" && (
+                  <td style={{ display: "flex", justifyContent: "center" }}>
+                    {excluir === item._id ? (
+                      <div style={{ display: "flex", flexDirection: "column" }}>
+                        Excluir {item.nick}?
+                        <button
+                          onClick={() => {
+                            handleRemove(item._id);
+                            setExcluir(false);
+                          }}
+                        >
+                          Confirmar
+                        </button>
+                        <button
+                          onClick={() => {
+                            setExcluir(false);
+                          }}
+                        >
+                          Cancelar
+                        </button>
+                      </div>
+                    ) : (
                       <button
                         onClick={() => {
-                          handleRemove(item._id);
-                          setExcluir(false);
+                          setExcluir(item._id);
                         }}
                       >
-                        Confirmar
+                        Excluir
                       </button>
-                      <button
-                        onClick={() => {
-                          setExcluir(false);
-                        }}
-                      >
-                        Cancelar
-                      </button>
-                    </div>
-                  ) : (
-                    <button
-                      onClick={() => {
-                        setExcluir(item._id);
-                      }}
-                    >
-                      Excluir
-                    </button>
-                  )}
-                </td>
+                    )}
+                  </td>
+                )}
 
                 <td>{item._id}</td>
                 <td>{item.nick}</td>

@@ -28,7 +28,27 @@ const Familia = () => {
     async function handleAPI() {
       const resolve = await instance.get("/todasfamilias");
 
-      setFamilias(resolve.data);
+      setFamilias(() => ({
+        comGrupo: resolve.data.comGrupo.filter(
+          (it) =>
+            localStorage.getItem("type") !== "coord" ||
+            (localStorage.getItem("type") === "coord" &&
+              it.cuidador.cidade ===
+                colaboradores.find(
+                  (item) => item.nick === localStorage.getItem("user")
+                )?.cidade)
+        ),
+        semGrupo: resolve.data.semGrupo.filter(
+          (it) =>
+            localStorage.getItem("type") !== "coord" ||
+            (localStorage.getItem("type") === "coord" &&
+              it.cuidador.cidade ===
+                colaboradores.find(
+                  (item) => item.nick === localStorage.getItem("user")
+                )?.cidade)
+        ),
+      }));
+
       setStarterFamilias(resolve.data);
 
       const response = await instance.get("/users");
@@ -85,7 +105,13 @@ const Familia = () => {
           it.cuidador.estado
             .toLowerCase()
             .includes(filtrosAux.estado.toLowerCase()) &&
-          it.userId.toLowerCase().includes(filtrosAux.userId.toLowerCase())
+          it.userId.toLowerCase().includes(filtrosAux.userId.toLowerCase()) &&
+          (localStorage.getItem("type") !== "coord" ||
+            (localStorage.getItem("type") === "coord" &&
+              it.cidade ===
+                colaboradores.find(
+                  (item) => item.nick === localStorage.getItem("user")
+                )?.cidade))
       ),
       semGrupo: starterFamilias.semGrupo.filter(
         (it) =>
@@ -95,7 +121,13 @@ const Familia = () => {
           it.cuidador.estado
             .toLowerCase()
             .includes(filtrosAux.estado.toLowerCase()) &&
-          it.userId.toLowerCase().includes(filtrosAux.userId.toLowerCase())
+          it.userId.toLowerCase().includes(filtrosAux.userId.toLowerCase()) &&
+          (localStorage.getItem("type") !== "coord" ||
+            (localStorage.getItem("type") === "coord" &&
+              it.cidade ===
+                colaboradores.find(
+                  (item) => item.nick === localStorage.getItem("user")
+                )?.cidade))
       ),
     });
   };
@@ -176,35 +208,37 @@ const Familia = () => {
           >
             Famílias
           </button>
-          <button
-            disabled={location === "/questionarios"}
-            style={
-              location === "/questionarios"
-                ? {
-                    height: 80,
-                    fontSize: 30,
-                    borderRadius: 30,
-                    background: "#faaa",
-                    margin: 10,
-                    color: "black",
-                    border: "2px solid black",
-                    cursor: "pointer",
-                  }
-                : {
-                    height: 80,
-                    fontSize: 30,
-                    borderRadius: 30,
-                    margin: 10,
-                    border: "2px solid black",
-                    cursor: "pointer",
-                  }
-            }
-            onClick={() => {
-              navigate("/questionarios");
-            }}
-          >
-            Questionários
-          </button>
+          {localStorage.getItem("type") !== "coord" && (
+            <button
+              disabled={location === "/questionarios"}
+              style={
+                location === "/questionarios"
+                  ? {
+                      height: 80,
+                      fontSize: 30,
+                      borderRadius: 30,
+                      background: "#faaa",
+                      margin: 10,
+                      color: "black",
+                      border: "2px solid black",
+                      cursor: "pointer",
+                    }
+                  : {
+                      height: 80,
+                      fontSize: 30,
+                      borderRadius: 30,
+                      margin: 10,
+                      border: "2px solid black",
+                      cursor: "pointer",
+                    }
+              }
+              onClick={() => {
+                navigate("/questionarios");
+              }}
+            >
+              Questionários
+            </button>
+          )}
           <button
             style={{
               height: 80,
